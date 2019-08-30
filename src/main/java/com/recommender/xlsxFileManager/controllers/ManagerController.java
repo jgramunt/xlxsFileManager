@@ -7,6 +7,8 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+
 @RestController
 public class ManagerController {
 
@@ -27,7 +29,7 @@ public class ManagerController {
 
     @ResponseStatus(HttpStatus.ACCEPTED)
     @PostMapping(value = "/uploadFile")
-    public String uploadXlxsFile(@RequestParam("file") MultipartFile xlsxFile, @RequestParam String languageCode) {
+    public String uploadXlxsFile(@RequestParam("file") MultipartFile xlsxFile, @RequestParam String languageCode) throws IOException {
         return managerService.uploadFile(xlsxFile, languageCode);
     }
 }

@@ -1,23 +1,17 @@
 package com.recommender.xlsxFileManager.services;
 
-import com.recommender.xlsxFileManager.services.auxuliaryServices.FolderManager;
+import com.recommender.xlsxFileManager.services.auxuliaryServices.FileGetter;
+import com.recommender.xlsxFileManager.services.auxuliaryServices.FileProcessor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class ManagerService {
 
-
     public String uploadFile(MultipartFile xlxsFile, String languageCode) {
+        FileProcessor fileProcessor = new FileProcessor();
+        return fileProcessor.process(xlxsFile, languageCode);
 
-        FolderManager
-        //TODO check if directory for language code exists, create if not (with jsons folder)
-        //TODO store the file in the directory root
-        //TODO get the File from MultipartFile, create Workbook, get first sheet
-        //TODO create JSON with language code
-        //TODO store them in the appropiate folder
-
-        return xlxsFile.getOriginalFilename() + " " + languageCode;
     }
 
     public String getAll() {
@@ -25,6 +19,7 @@ public class ManagerService {
     }
 
     public String getLanguage(String languageCode) {
+        FileGetter fileGetter = new FileGetter();
         return null;
     }
 }
